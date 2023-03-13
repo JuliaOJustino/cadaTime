@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento</title>
+</head>
+
+<body>
+    <div class="form">
+        <span>Nome do time1:</span>
+        <input type="text" id="inp_nome" placeholder="Digite nome:">
+        <br>
+        <span>Quantidade de pontos</span>
+        <input type="text" id="inp_pontos" placeholder="Digite quantidade de pontos">
+        <br>
+        <hr>
+        <span>Nome do time2:</span>
+        <input type="text" id="inp_nome2" placeholder="Digite nome:">
+        <br>
+        <span>Quantidade de pontos</span>
+        <input type="text" id="inp_pontos2" placeholder="Digite quantidade de pontos">
+        <button onclick="funJogos()">Analisar Partida</button>
+        <div id="msg">
+
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function funJogos() {
+        let pontosTime1 = Number(inp_pontos.value);
+        let pontosTime2 = Number(inp_pontos2.value);
+        let totalPontos = (pontosTime1 + pontosTime2);
+        let nomeTime1 = inp_nome.value;
+        let nomeTime2 = inp_nome2.value;
+        console.log(totalPontos)
+        if (pontosTime1 > pontosTime2) {
+            let valortotal = pontosTime1 - pontosTime2;
+            alert("Time 1 ganhou");
+            let ponce = (valortotal * 100) / pontosTime1;
+            console.log(ponce);
+            let cesta2 = pontosTime1 / 2;
+            let cesta3 = pontosTime1 / 3;
+            msg.innerHTML += `  <p> A vitória é do time ${nomeTime1}, com uma vantagem de ${valortotal} pontos, ou seja, obteve ${ponce}% dos pontos totais da partida. 
+Com o total de ${pontosTime1} pontos, o time pode ter feito ${cesta2} cestas de 2 pontos ou ${cesta3} cestas de 3 pontos.</p> <br>`;
+            if (cesta3 > 30) {
+                msg.innerHTML += ` O time tem um verdadeiro cestinha!<br>`;
+            }
+        }
+        if (pontosTime1 < pontosTime2) {
+            let valortotali = pontosTime2 - pontosTime1;
+            console.log(valortotali);
+            alert("Time 2 ganhou");
+            let poncei = (valortotali * 100) / pontosTime2;
+            console.log(poncei);
+            let cesta2i = pontosTime2 / 2;
+            let cesta3i = pontosTime2 / 3;
+            msg.innerHTML += `  <p>A vitória é do time ${nomeTime2}, com uma vantagem de ${valortotali} pontos, ou seja, obteve ${poncei}% dos pontos totais da partida. 
+Com o total de ${pontosTime2} pontos, o time pode ter feito ${cesta2i} cestas de 2 pontos ou ${cesta3i} cestas de 3 pontos.  </p> <br>`;
+            if (cesta3i > 30) {
+                msg.innerHTML += ` O time tem um verdadeiro cestinha!<br>`;
+            }
+        }
+        if (pontosTime1 >= 100 || pontosTime2 >= 100) {
+            msg.innerHTML += `<b>O jogo teve muitos pontos, então é digno de ser clássico da NBA!</b><BR>
+                                <h1>  ANÁLISE DA PARTIDA </h1><br>
+                                <p> Total de Pontos:<b> ${totalPontos}</b></p><br>
+                                O time ${nomeTime1}: <b>${pontosTime1}</b>
+                                <p>O time ${nomeTime2}: <b>${pontosTime2}</b></p>
+                            `;
+        }
+        if (pontosTime1 == pontosTime2) {
+            console.log("Empate aaaaaaaaaa");
+            msg.innerHTML += `<h1> HOUVE UM EMPATE!!!</h1>`;
+
+        }
+        else {
+            msg.innerHTML += `<b>O jogo teve muitos pontos, então é digno de ser clássico da NBA!</b><BR>
+                                <h1>  ANÁLISE DA PARTIDA </h1><br>
+                                <p> Total de Pontos:<b> ${totalPontos}</b></p><br>
+                                O time ${nomeTime1}: <b>${pontosTime1}</b>
+                                <p>O time ${nomeTime2}: <b>${pontosTime2}</b></p>
+                            `;
+        }
+    }
+</script>
